@@ -1,0 +1,5 @@
+r.external input=ESA_WorldCover_10m_2020_v100_Map.tif output=lc
+r.external.out directory=$PWD format="GTiff" option="BIGTIFF=YES,COMPRESS=DEFLATE,TILED=YES"
+g.region raster=lc
+r.mapcalc "waterESA2020.tif = isnull(lc) ||| lc==80"
+r.external.out -r
